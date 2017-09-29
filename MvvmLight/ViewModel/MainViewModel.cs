@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using MvvmDialogs;
 using MvvmLight.Model;
 
 namespace MvvmLight.ViewModel
@@ -12,6 +13,7 @@ namespace MvvmLight.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private readonly IDataService _dataService;
+        private readonly IDialogService _dialogService;
 
         /// <summary>
         /// The <see cref="WelcomeTitle" /> property's name.
@@ -39,8 +41,9 @@ namespace MvvmLight.ViewModel
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel(IDataService dataService, IDialogService dialogService) // Did try to remove dataService - but the result is the same
         {
+            _dialogService = dialogService;
             _dataService = dataService;
             _dataService.GetData(
                 (item, error) =>
