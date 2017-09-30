@@ -38,8 +38,7 @@ namespace MvvmLight.ViewModel
             {
                 SimpleIoc.Default.Register<IDataService, DataService>();
             }
-            // Did try to manual register DialogService below - but it is not possible because of multiple constructs with no default constructor annotation
-            // SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<IDialogService>(() => new DialogService());
             SimpleIoc.Default.Register<MainViewModel>();
         }
 
